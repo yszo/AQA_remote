@@ -1,0 +1,11 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="SimpleTest suite name" verbose="2" parallel="classes" thread-count="10">
+<!--<suite name="SimpleTest suite name">-->
+    <test name="SimpleTest test name" >
+        <classes>
+            <class name="ua.hillel.testing.HW08Test"/>
+        </classes>
+    </test>
+</suite>
