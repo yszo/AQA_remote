@@ -40,9 +40,9 @@ public class HW09Test {
 
         WebElement buttonLogin = driver.findElement(By.cssSelector("#SubmitCreate"));
         buttonLogin.click();
-        Thread.sleep(5000);
+        Thread.sleep(2000);
         WebElement registrationHeader = driver.findElement(By.cssSelector("#noSlide>h1"));
-        Assert.assertNotNull(registrationHeader);
+        Assert.assertEquals(true, registrationHeader.isDisplayed());
     }
 
     @Test
@@ -52,9 +52,9 @@ public class HW09Test {
         userEmailField.sendKeys(USER_INVALID_EMAIL);
         WebElement buttonLogin = driver.findElement(By.cssSelector("#SubmitCreate"));
         buttonLogin.click();
-
+        Thread.sleep(2000);
         WebElement alert = driver.findElement(By.cssSelector("#create_account_error"));
-        Assert.assertNotNull(alert);
+        Assert.assertEquals(true, alert.isDisplayed());
     }
 
 }
