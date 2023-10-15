@@ -38,7 +38,7 @@ public class HW09Test {
         userEmailField.clear();
         userEmailField.sendKeys(USER_EMAIL);
 
-        WebElement buttonLogin = driver.findElement(By.cssSelector("#SubmitCreate"));
+        WebElement buttonLogin = driver.findElement(By.id("SubmitCreate"));
         buttonLogin.click();
         Thread.sleep(2000);
         WebElement registrationHeader = driver.findElement(By.cssSelector("#noSlide>h1"));
@@ -50,11 +50,12 @@ public class HW09Test {
         WebElement userEmailField = driver.findElement(By.xpath("//*[@id=\"email_create\"]"));
         userEmailField.clear();
         userEmailField.sendKeys(USER_INVALID_EMAIL);
-        WebElement buttonLogin = driver.findElement(By.cssSelector("#SubmitCreate"));
+        WebElement buttonLogin = driver.findElement(By.id("SubmitCreate"));
         buttonLogin.click();
         Thread.sleep(2000);
-        WebElement alert = driver.findElement(By.cssSelector("#create_account_error"));
+        WebElement alert = driver.findElement(By.id("create_account_error"));
         Assert.assertEquals(true, alert.isDisplayed());
+
     }
 
 }
