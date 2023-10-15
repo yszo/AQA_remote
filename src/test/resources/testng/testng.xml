@@ -5,7 +5,7 @@
 <!--<suite name="SimpleTest suite name">-->
     <test name="SimpleTest test name" >
         <classes>
-            <class name="ua.hillel.testing.HW08Test"/>
+            <class name="ua.hillel.testing.HW09Test"/>
         </classes>
     </test>
 </suite>
