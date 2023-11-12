@@ -1,6 +1,7 @@
 package ua.hillel.testing;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -8,10 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
-import java.time.Duration;
-import java.util.List;
-
-public class HW09Test {
+public class HW12Test {
 
     private WebDriver driver;
     private WebDriverWait wait;
@@ -37,25 +35,22 @@ public class HW09Test {
         WebElement userEmailField = driver.findElement(By.xpath("//*[@id=\"email_create\"]"));
         userEmailField.clear();
         userEmailField.sendKeys(USER_EMAIL);
-
+        JavascriptExecutor js = (JavascriptExecutor) driver;
         WebElement buttonLogin = driver.findElement(By.id("SubmitCreate"));
-        buttonLogin.click();
+        js.executeScript("arguments[0].click();", buttonLogin);
         Thread.sleep(2000);
         WebElement registrationHeader = driver.findElement(By.cssSelector("#noSlide>h1"));
         Assert.assertEquals(true, registrationHeader.isDisplayed());
     }
 
     @Test
-    public void InvalidEmailTest() throws InterruptedException {
-        WebElement userEmailField = driver.findElement(By.xpath("//*[@id=\"email_create\"]"));
-        userEmailField.clear();
-        userEmailField.sendKeys(USER_INVALID_EMAIL);
-        WebElement buttonLogin = driver.findElement(By.id("SubmitCreate"));
-        buttonLogin.click();
-        Thread.sleep(2000);
-        WebElement alert = driver.findElement(By.id("create_account_error"));
-        Assert.assertEquals(true, alert.isDisplayed());
-
+    public void ContactsTest() throws InterruptedException {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+        WebElement menuItem = driver.findElement(By.cssSelector("ul.toggle-footer > li.item:nth-of-type(5) > a"));
+        js.executeScript("arguments[0].click();", menuItem);
+        String checkHeader =  driver.findElement(By.cssSelector("div#center_column > h1.page-heading")).getText();
+        Assert.assertEquals(checkHeader, "CUSTOMER SERVICE - CONTACT US");
     }
 
 }
