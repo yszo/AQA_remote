@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class MyFilesUtils {
     public static File generateLoremFile() throws IOException {
         Faker faker = new Faker();
-        List<String> words = faker.lorem().words(100);
+        List<String> words = faker.lorem().words(90);
         File generatedFile = new File("files", "generated.txt");
         FileUtils.writeLines(generatedFile, words);
         return generatedFile;
