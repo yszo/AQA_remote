@@ -10,6 +10,7 @@ public class WebDriverFactory3 {
         WebDriver driver = null;
         switch (browser) {
             case CHROME:
+                System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
                 driver = new ChromeDriver();
                 break;
             case EDGE:
@@ -26,6 +27,7 @@ public class WebDriverFactory3 {
     public static WebDriver getDriver() {
         Browser browser = null;
         try {
+
             browser = Browser.valueOf(System.getProperty("browser", "chrome").toUpperCase());
         } catch (IllegalArgumentException ex) {
             System.out.println("This driver is not supported.\nPlease choose: chrome, edge, firefox");

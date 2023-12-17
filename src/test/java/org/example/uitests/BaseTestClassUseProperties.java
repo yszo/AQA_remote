@@ -4,6 +4,7 @@ import org.example.uitests.driver.WebDriverFactory3;
 import org.example.uitests.driver.WebDriverHolder;
 import org.example.uitests.utils.ConfigProvider;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
@@ -17,7 +18,6 @@ public class BaseTestClassUseProperties {
 
         driver = WebDriverHolder.getInstance().getDriver();
         driver.manage().window().maximize();
-        goToUrl();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
 
@@ -33,11 +33,9 @@ public class BaseTestClassUseProperties {
 
     public void goToUrl(String url) {
  //       driver.get(url);
-        WebDriverHolder.getInstance().getDriver().get(url);
+        PageFactory.initElements(WebDriverHolder.getInstance().getDriver(), this);
     }
 
-    public void goToUrl() {
-        goToUrl(ConfigProvider.getInstance().getProperty("app.base.url"));
-    }
+
 
 }
